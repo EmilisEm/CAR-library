@@ -1,0 +1,19 @@
+Start testing: Jan 19 22:46 EET
+----------------------------------------------------------
+1/1 Testing: carl_tests
+1/1 Test: carl_tests
+Command: "/home/emilis/notes/kursinis/CARL/build/carl_tests"
+Directory: /home/emilis/notes/kursinis/CARL/build
+"carl_tests" start time: Jan 19 22:46 EET
+Output:
+----------------------------------------------------------
+All tests passed.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"carl_tests" end time: Jan 19 22:46 EET
+"carl_tests" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Jan 19 22:46 EET
