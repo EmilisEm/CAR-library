@@ -224,17 +224,24 @@ CMakeFiles/example_temperature.dir/examples/temperature_converter.cpp.o: \
  /usr/include/c++/15.2.1/variant \
  /usr/include/c++/15.2.1/bits/elements_of.h \
  /home/emilis/notes/kursinis/CARL/include/carl/scheduler.h \
- /usr/include/c++/15.2.1/coroutine \
+ /usr/include/c++/15.2.1/condition_variable \
+ /usr/include/c++/15.2.1/bits/shared_ptr.h \
+ /usr/include/c++/15.2.1/bits/shared_ptr_base.h \
+ /usr/include/c++/15.2.1/bits/allocated_ptr.h \
+ /usr/include/c++/15.2.1/bits/unique_ptr.h \
+ /usr/include/c++/15.2.1/ext/concurrence.h \
+ /usr/include/c++/15.2.1/bits/align.h /usr/include/c++/15.2.1/stop_token \
+ /usr/include/c++/15.2.1/bits/std_thread.h \
+ /usr/include/c++/15.2.1/semaphore \
+ /usr/include/c++/15.2.1/bits/semaphore_base.h \
+ /usr/include/c++/15.2.1/bits/atomic_timed_wait.h \
+ /usr/include/c++/15.2.1/bits/this_thread_sleep.h /usr/include/sys/time.h \
+ /usr/include/semaphore.h /usr/include/bits/semaphore.h \
+ /usr/include/c++/15.2.1/coroutine /usr/include/c++/15.2.1/thread \
  /home/emilis/notes/kursinis/CARL/include/carl/task.h \
  /home/emilis/notes/kursinis/CARL/include/carl/signal.h \
  /usr/include/c++/15.2.1/memory \
  /usr/include/c++/15.2.1/bits/stl_raw_storage_iter.h \
- /usr/include/c++/15.2.1/bits/align.h \
- /usr/include/c++/15.2.1/bits/unique_ptr.h \
- /usr/include/c++/15.2.1/bits/shared_ptr.h \
- /usr/include/c++/15.2.1/bits/shared_ptr_base.h \
- /usr/include/c++/15.2.1/bits/allocated_ptr.h \
- /usr/include/c++/15.2.1/ext/concurrence.h \
  /usr/include/c++/15.2.1/bits/shared_ptr_atomic.h \
  /usr/include/c++/15.2.1/backward/auto_ptr.h \
  /usr/include/c++/15.2.1/bits/ranges_uninitialized.h \
@@ -242,4 +249,5 @@ CMakeFiles/example_temperature.dir/examples/temperature_converter.cpp.o: \
  /usr/include/c++/15.2.1/pstl/glue_memory_defs.h \
  /usr/include/c++/15.2.1/pstl/execution_defs.h \
  /home/emilis/notes/kursinis/CARL/include/carl/subscription.h \
- /home/emilis/notes/kursinis/CARL/include/carl/stream.h
+ /home/emilis/notes/kursinis/CARL/include/carl/stream.h \
+ /home/emilis/notes/kursinis/CARL/include/carl/reactive_context.h

@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "carl/actor.h"
+#include "carl/reactive_context.h"
 #include "carl/scheduler.h"
 #include "carl/signal.h"
 #include "carl/stream.h"
@@ -26,33 +27,43 @@ public:
 };
 
 void test_signal_map() {
+    carl::Scheduler scheduler(1);
+    carl::ReactiveContext context(scheduler);
     carl::Signal<int> source(2);
-    auto mapped = carl::signal_map(source, [](int value) { return value * 3; });
+    auto mapped = context.signal_map(source, [](int value) { return value * 3; });
 
     EXPECT_EQ(mapped.value(), 6);
-    source.set(4);
+    source.set(scheduler, 4);
+    scheduler.run();
     EXPECT_EQ(mapped.value(), 12);
 }
 
 void test_signal_combine() {
+    carl::Scheduler scheduler(1);
+    carl::ReactiveContext context(scheduler);
     carl::Signal<int> left(1);
     carl::Signal<int> right(2);
-    auto combined = carl::signal_combine(left, right, [](int a, int b) { return a + b; });
+    auto combined = context.signal_combine(left, right, [](int a, int b) { return a + b; });
 
     EXPECT_EQ(combined.value(), 3);
-    left.set(5);
+    left.set(scheduler, 5);
+    scheduler.run();
     EXPECT_EQ(combined.value(), 7);
-    right.set(4);
+    right.set(scheduler, 4);
+    scheduler.run();
     EXPECT_EQ(combined.value(), 9);
 }
 
 void test_stream_fold() {
+    carl::Scheduler scheduler(1);
+    carl::ReactiveContext context(scheduler);
     carl::Stream<int> stream;
-    auto sum = carl::stream_fold(stream, 0, [](int acc, int value) { return acc + value; });
+    auto sum = context.stream_fold(stream, 0, [](int acc, int value) { return acc + value; });
 
-    stream.emit(1);
-    stream.emit(2);
-    stream.emit(3);
+    stream.emit(scheduler, 1);
+    stream.emit(scheduler, 2);
+    stream.emit(scheduler, 3);
+    scheduler.run();
     EXPECT_EQ(sum.value(), 6);
 }
 

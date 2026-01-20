@@ -62,12 +62,16 @@ public:
 
     template <typename T>
     void set(Signal<T>& signal, T value) {
-        post([&signal, payload = std::move(value)]() mutable { signal.set(std::move(payload)); });
+        post([this, &signal, payload = std::move(value)]() mutable {
+            signal.set(scheduler_, std::move(payload));
+        });
     }
 
     template <typename T>
     void emit(Stream<T>& stream, T value) {
-        post([&stream, payload = std::move(value)]() mutable { stream.emit(std::move(payload)); });
+        post([this, &stream, payload = std::move(value)]() mutable {
+            stream.emit(scheduler_, std::move(payload));
+        });
     }
 
 protected:

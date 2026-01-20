@@ -8,7 +8,9 @@
 #include <utility>
 #include <vector>
 
+#include "carl/scheduler.h"
 #include "carl/subscription.h"
+#include "carl/task.h"
 
 namespace carl {
 
@@ -44,6 +46,19 @@ public:
         }
     }
 
+    void set(Scheduler& scheduler, T value) {
+        std::vector<Callback> callbacks;
+        T current;
+        {
+            std::lock_guard<std::mutex> lock(state_->mutex);
+            state_->value = std::move(value);
+            current = state_->value;
+            callbacks = state_->observers;
+        }
+
+        scheduler.spawn(dispatch_callbacks(std::move(callbacks), std::move(current)));
+    }
+
     Subscription subscribe(Callback callback) {
         std::lock_guard<std::mutex> lock(state_->mutex);
         const std::size_t index = state_->observers.size();
@@ -66,6 +81,15 @@ public:
     }
 
 private:
+    static Task dispatch_callbacks(std::vector<Callback> callbacks, T value) {
+        for (const auto& callback : callbacks) {
+            if (callback) {
+                callback(value);
+            }
+        }
+        co_return;
+    }
+
     struct State {
         explicit State(T initial) : value(std::move(initial)) {}
 
@@ -96,6 +120,19 @@ auto signal_map(Signal<T>& input, Fn&& fn) {
     return output;
 }
 
+template <typename T, typename Fn>
+auto signal_map(Scheduler& scheduler, Signal<T>& input, Fn&& fn) {
+    using Result = std::invoke_result_t<Fn, const T&>;
+    Signal<Result> output(fn(input.value()));
+
+    auto update = [output, &scheduler, func = std::forward<Fn>(fn)](const T& value) mutable {
+        output.set(scheduler, func(value));
+    };
+
+    output.keep_alive(input.subscribe(std::move(update)));
+    return output;
+}
+
 template <typename A, typename B, typename Fn>
 auto signal_combine(Signal<A>& left, Signal<B>& right, Fn&& fn) {
     using Result = std::invoke_result_t<Fn, const A&, const B&>;
@@ -103,6 +140,20 @@ auto signal_combine(Signal<A>& left, Signal<B>& right, Fn&& fn) {
 
     auto update = [output, &left, &right, func = std::forward<Fn>(fn)](const auto&) mutable {
         output.set(func(left.value(), right.value()));
+    };
+
+    output.keep_alive(left.subscribe(update));
+    output.keep_alive(right.subscribe(update));
+    return output;
+}
+
+template <typename A, typename B, typename Fn>
+auto signal_combine(Scheduler& scheduler, Signal<A>& left, Signal<B>& right, Fn&& fn) {
+    using Result = std::invoke_result_t<Fn, const A&, const B&>;
+    Signal<Result> output(fn(left.value(), right.value()));
+
+    auto update = [output, &scheduler, &left, &right, func = std::forward<Fn>(fn)](const auto&) mutable {
+        output.set(scheduler, func(left.value(), right.value()));
     };
 
     output.keep_alive(left.subscribe(update));

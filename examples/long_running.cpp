@@ -14,7 +14,7 @@ public:
 
 carl::Task compute_progress(carl::Scheduler& scheduler, carl::Stream<int>& progress) {
     for (int step = 0; step <= 4; ++step) {
-        progress.emit(step);
+        progress.emit(scheduler, step);
         co_await scheduler.yield();
     }
 }

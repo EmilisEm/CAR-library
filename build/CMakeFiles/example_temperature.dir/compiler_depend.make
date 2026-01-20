@@ -47,6 +47,7 @@ CMakeFiles/example_temperature.dir/examples/temperature_converter.cpp.o: /home/e
   /usr/include/bits/pthreadtypes.h \
   /usr/include/bits/sched.h \
   /usr/include/bits/select.h \
+  /usr/include/bits/semaphore.h \
   /usr/include/bits/setjmp.h \
   /usr/include/bits/stdint-intn.h \
   /usr/include/bits/stdint-least.h \
@@ -108,6 +109,7 @@ CMakeFiles/example_temperature.dir/examples/temperature_converter.cpp.o: /home/e
   /usr/include/c++/15.2.1/bits/allocator.h \
   /usr/include/c++/15.2.1/bits/atomic_base.h \
   /usr/include/c++/15.2.1/bits/atomic_lockfree_defines.h \
+  /usr/include/c++/15.2.1/bits/atomic_timed_wait.h \
   /usr/include/c++/15.2.1/bits/atomic_wait.h \
   /usr/include/c++/15.2.1/bits/basic_ios.h \
   /usr/include/c++/15.2.1/bits/basic_ios.tcc \
@@ -172,12 +174,14 @@ CMakeFiles/example_temperature.dir/examples/temperature_converter.cpp.o: /home/e
   /usr/include/c++/15.2.1/bits/ranges_util.h \
   /usr/include/c++/15.2.1/bits/refwrap.h \
   /usr/include/c++/15.2.1/bits/requires_hosted.h \
+  /usr/include/c++/15.2.1/bits/semaphore_base.h \
   /usr/include/c++/15.2.1/bits/shared_ptr.h \
   /usr/include/c++/15.2.1/bits/shared_ptr_atomic.h \
   /usr/include/c++/15.2.1/bits/shared_ptr_base.h \
   /usr/include/c++/15.2.1/bits/std_abs.h \
   /usr/include/c++/15.2.1/bits/std_function.h \
   /usr/include/c++/15.2.1/bits/std_mutex.h \
+  /usr/include/c++/15.2.1/bits/std_thread.h \
   /usr/include/c++/15.2.1/bits/stl_algo.h \
   /usr/include/c++/15.2.1/bits/stl_algobase.h \
   /usr/include/c++/15.2.1/bits/stl_bvector.h \
@@ -200,6 +204,7 @@ CMakeFiles/example_temperature.dir/examples/temperature_converter.cpp.o: /home/e
   /usr/include/c++/15.2.1/bits/streambuf_iterator.h \
   /usr/include/c++/15.2.1/bits/string_view.tcc \
   /usr/include/c++/15.2.1/bits/stringfwd.h \
+  /usr/include/c++/15.2.1/bits/this_thread_sleep.h \
   /usr/include/c++/15.2.1/bits/unicode-data.h \
   /usr/include/c++/15.2.1/bits/unicode.h \
   /usr/include/c++/15.2.1/bits/uniform_int_dist.h \
@@ -218,6 +223,7 @@ CMakeFiles/example_temperature.dir/examples/temperature_converter.cpp.o: /home/e
   /usr/include/c++/15.2.1/clocale \
   /usr/include/c++/15.2.1/compare \
   /usr/include/c++/15.2.1/concepts \
+  /usr/include/c++/15.2.1/condition_variable \
   /usr/include/c++/15.2.1/coroutine \
   /usr/include/c++/15.2.1/cstddef \
   /usr/include/c++/15.2.1/cstdint \
@@ -259,12 +265,15 @@ CMakeFiles/example_temperature.dir/examples/temperature_converter.cpp.o: /home/e
   /usr/include/c++/15.2.1/queue \
   /usr/include/c++/15.2.1/ranges \
   /usr/include/c++/15.2.1/ratio \
+  /usr/include/c++/15.2.1/semaphore \
   /usr/include/c++/15.2.1/span \
   /usr/include/c++/15.2.1/stdexcept \
+  /usr/include/c++/15.2.1/stop_token \
   /usr/include/c++/15.2.1/streambuf \
   /usr/include/c++/15.2.1/string \
   /usr/include/c++/15.2.1/string_view \
   /usr/include/c++/15.2.1/system_error \
+  /usr/include/c++/15.2.1/thread \
   /usr/include/c++/15.2.1/tuple \
   /usr/include/c++/15.2.1/type_traits \
   /usr/include/c++/15.2.1/typeinfo \
@@ -304,6 +313,7 @@ CMakeFiles/example_temperature.dir/examples/temperature_converter.cpp.o: /home/e
   /usr/include/locale.h \
   /usr/include/pthread.h \
   /usr/include/sched.h \
+  /usr/include/semaphore.h \
   /usr/include/stdc-predef.h \
   /usr/include/stdint.h \
   /usr/include/stdio.h \
@@ -312,6 +322,7 @@ CMakeFiles/example_temperature.dir/examples/temperature_converter.cpp.o: /home/e
   /usr/include/sys/select.h \
   /usr/include/sys/single_threaded.h \
   /usr/include/sys/syscall.h \
+  /usr/include/sys/time.h \
   /usr/include/sys/types.h \
   /usr/include/syscall.h \
   /usr/include/time.h \
@@ -349,8 +360,6 @@ CMakeFiles/example_temperature.dir/examples/temperature_converter.cpp.o:
 
 /usr/lib/libm.so.6:
 
-/usr/lib/libc_nonshared.a:
-
 /usr/lib/libc.so.6:
 
 /usr/lib/ld-linux-x86-64.so.2:
@@ -380,6 +389,8 @@ CMakeFiles/example_temperature.dir/examples/temperature_converter.cpp.o:
 /usr/include/syscall.h:
 
 /usr/include/sys/types.h:
+
+/usr/include/sys/time.h:
 
 /usr/include/sys/select.h:
 
@@ -439,6 +450,8 @@ CMakeFiles/example_temperature.dir/examples/temperature_converter.cpp.o:
 
 /usr/include/c++/15.2.1/typeinfo:
 
+/usr/include/c++/15.2.1/thread:
+
 /usr/include/c++/15.2.1/string_view:
 
 /usr/include/c++/15.2.1/string:
@@ -449,11 +462,15 @@ CMakeFiles/example_temperature.dir/examples/temperature_converter.cpp.o:
 
 /usr/include/c++/15.2.1/span:
 
-/usr/include/c++/15.2.1/bits/exception_ptr.h:
+/usr/include/c++/15.2.1/ranges:
 
-/usr/lib/libc.so:
+/usr/include/c++/15.2.1/pstl/pstl_config.h:
 
-/usr/include/bits/pthreadtypes.h:
+/usr/include/c++/15.2.1/pstl/glue_memory_defs.h:
+
+/usr/include/c++/15.2.1/pstl/execution_defs.h:
+
+/usr/include/c++/15.2.1/ostream:
 
 /usr/include/c++/15.2.1/bits/cxxabi_init_exception.h:
 
@@ -468,6 +485,8 @@ CMakeFiles/example_temperature.dir/examples/temperature_converter.cpp.o:
 /usr/include/c++/15.2.1/bits/basic_ios.tcc:
 
 /usr/include/c++/15.2.1/cerrno:
+
+/usr/include/c++/15.2.1/bits/atomic_timed_wait.h:
 
 /usr/include/bits/types/error_t.h:
 
@@ -525,10 +544,6 @@ CMakeFiles/example_temperature.dir/examples/temperature_converter.cpp.o:
 
 /usr/include/bits/types/struct_timespec.h:
 
-/usr/include/c++/15.2.1/vector:
-
-/usr/include/c++/15.2.1/bits/exception_defines.h:
-
 /usr/include/bits/waitflags.h:
 
 /usr/include/c++/15.2.1/bits/stl_pair.h:
@@ -544,6 +559,10 @@ CMakeFiles/example_temperature.dir/examples/temperature_converter.cpp.o:
 /usr/include/bits/types/sigset_t.h:
 
 /usr/include/bits/types/mbstate_t.h:
+
+/usr/include/bits/semaphore.h:
+
+/usr/include/c++/15.2.1/stop_token:
 
 /usr/include/bits/types/locale_t.h:
 
@@ -611,9 +630,11 @@ CMakeFiles/example_temperature.dir/examples/temperature_converter.cpp.o:
 
 /usr/include/bits/posix_opt.h:
 
-/usr/include/c++/15.2.1/pstl/execution_defs.h:
-
 /usr/include/bits/types/__mbstate_t.h:
+
+/usr/include/asm/posix_types.h:
+
+/usr/include/bits/time.h:
 
 /usr/include/bits/stdio_lim.h:
 
@@ -635,9 +656,17 @@ CMakeFiles/example_temperature.dir/examples/temperature_converter.cpp.o:
 
 /usr/include/c++/15.2.1/compare:
 
-/usr/include/bits/time.h:
+/usr/include/bits/endian.h:
 
-/usr/include/asm/posix_types.h:
+/usr/include/c++/15.2.1/bits/invoke.h:
+
+/usr/include/c++/15.2.1/bits/stl_function.h:
+
+/usr/include/c++/15.2.1/bits/erase_if.h:
+
+/home/emilis/notes/kursinis/CARL/include/carl/scheduler.h:
+
+/usr/include/semaphore.h:
 
 /usr/include/c++/15.2.1/bits/atomic_wait.h:
 
@@ -646,10 +675,6 @@ CMakeFiles/example_temperature.dir/examples/temperature_converter.cpp.o:
 /usr/include/bits/types/__sigset_t.h:
 
 /usr/include/c++/15.2.1/bits/unique_lock.h:
-
-/usr/include/c++/15.2.1/bits/erase_if.h:
-
-/home/emilis/notes/kursinis/CARL/include/carl/scheduler.h:
 
 /usr/include/stdio.h:
 
@@ -663,13 +688,7 @@ CMakeFiles/example_temperature.dir/examples/temperature_converter.cpp.o:
 
 /home/emilis/notes/kursinis/CARL/include/carl/actor.h:
 
-/usr/include/bits/environments.h:
-
-/usr/include/bits/types/struct_FILE.h:
-
 /usr/include/asm/types.h:
-
-/usr/include/c++/15.2.1/bits/ostream.h:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/limits.h:
 
@@ -697,35 +716,23 @@ CMakeFiles/example_temperature.dir/examples/temperature_converter.cpp.o:
 
 /usr/include/c++/15.2.1/bits/vector.tcc:
 
+/usr/include/c++/15.2.1/ios:
+
+/usr/include/bits/thread-shared-types.h:
+
 /usr/include/c++/15.2.1/bits/align.h:
 
 /usr/include/c++/15.2.1/debug/debug.h:
 
 /usr/include/bits/libc-header-start.h:
 
-/usr/include/c++/15.2.1/ostream:
-
 /usr/include/bits/locale.h:
 
 /usr/include/bits/syscall.h:
 
-/usr/include/bits/endian.h:
-
-/usr/include/c++/15.2.1/bits/invoke.h:
-
-/usr/include/c++/15.2.1/bits/stl_function.h:
-
-/usr/include/bits/thread-shared-types.h:
-
-/usr/include/c++/15.2.1/ios:
-
-/usr/include/c++/15.2.1/pstl/glue_memory_defs.h:
-
 /usr/include/bits/pthread_stack_min-dynamic.h:
 
 /usr/include/c++/15.2.1/coroutine:
-
-/usr/include/c++/15.2.1/pstl/pstl_config.h:
 
 /usr/include/c++/15.2.1/bits/atomic_base.h:
 
@@ -734,6 +741,12 @@ CMakeFiles/example_temperature.dir/examples/temperature_converter.cpp.o:
 /usr/include/asm-generic/posix_types.h:
 
 /home/emilis/notes/kursinis/CARL/include/carl/stream.h:
+
+/usr/lib/libc.so:
+
+/usr/include/bits/pthreadtypes.h:
+
+/usr/include/c++/15.2.1/bits/exception_ptr.h:
 
 /usr/include/bits/types/cookie_io_functions_t.h:
 
@@ -751,6 +764,14 @@ CMakeFiles/example_temperature.dir/examples/temperature_converter.cpp.o:
 
 /usr/include/c++/15.2.1/bits/codecvt.h:
 
+/usr/include/c++/15.2.1/bits/ostream.h:
+
+/usr/include/features.h:
+
+/usr/include/bits/sched.h:
+
+/usr/include/bits/types/__FILE.h:
+
 /usr/include/bits/waitstatus.h:
 
 /usr/include/bits/wchar.h:
@@ -759,15 +780,13 @@ CMakeFiles/example_temperature.dir/examples/temperature_converter.cpp.o:
 
 /usr/include/bits/setjmp.h:
 
+/usr/include/c++/15.2.1/vector:
+
+/usr/include/c++/15.2.1/bits/exception_defines.h:
+
 /usr/include/bits/types/clockid_t.h:
 
 /usr/include/bits/stdint-intn.h:
-
-/usr/include/features.h:
-
-/usr/include/bits/sched.h:
-
-/usr/include/bits/types/__FILE.h:
 
 /usr/lib/crtn.o:
 
@@ -797,11 +816,17 @@ CMakeFiles/example_temperature.dir/examples/temperature_converter.cpp.o:
 
 /usr/include/c++/15.2.1/bits/locale_conv.h:
 
+/usr/include/c++/15.2.1/semaphore:
+
 /usr/include/c++/15.2.1/bits/locale_facets.h:
 
 /usr/include/bits/types/struct_itimerspec.h:
 
 /usr/include/c++/15.2.1/bits/predefined_ops.h:
+
+/usr/lib/libc_nonshared.a:
+
+/usr/include/c++/15.2.1/condition_variable:
 
 /usr/include/c++/15.2.1/ext/string_conversions.h:
 
@@ -891,6 +916,10 @@ CMakeFiles/example_temperature.dir/examples/temperature_converter.cpp.o:
 
 /usr/include/c++/15.2.1/initializer_list:
 
+/usr/include/c++/15.2.1/bits/semaphore_base.h:
+
+/usr/include/c++/15.2.1/bits/std_function.h:
+
 /usr/include/sys/single_threaded.h:
 
 /usr/include/c++/15.2.1/bits/shared_ptr.h:
@@ -905,7 +934,11 @@ CMakeFiles/example_temperature.dir/examples/temperature_converter.cpp.o:
 
 /usr/include/c++/15.2.1/bits/std_abs.h:
 
-/usr/include/c++/15.2.1/bits/std_function.h:
+/usr/include/bits/environments.h:
+
+/usr/include/bits/types/struct_FILE.h:
+
+/usr/include/c++/15.2.1/bits/std_thread.h:
 
 /usr/include/c++/15.2.1/bits/stl_deque.h:
 
@@ -983,11 +1016,13 @@ CMakeFiles/example_temperature.dir/examples/temperature_converter.cpp.o:
 
 /usr/include/c++/15.2.1/bits/cxxabi_forced.h:
 
-/usr/include/c++/15.2.1/bits/elements_of.h:
-
 /usr/include/c++/15.2.1/bits/ranges_cmp.h:
 
+/usr/include/c++/15.2.1/bits/elements_of.h:
+
 /usr/include/c++/15.2.1/ext/concurrence.h:
+
+/usr/include/c++/15.2.1/bits/this_thread_sleep.h:
 
 /usr/include/c++/15.2.1/ext/type_traits.h:
 
@@ -1018,5 +1053,3 @@ CMakeFiles/example_temperature.dir/examples/temperature_converter.cpp.o:
 /usr/include/c++/15.2.1/ext/alloc_traits.h:
 
 /usr/include/c++/15.2.1/mutex:
-
-/usr/include/c++/15.2.1/ranges:

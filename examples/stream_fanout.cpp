@@ -2,6 +2,7 @@
 #include <string>
 
 #include "carl/actor.h"
+#include "carl/reactive_context.h"
 #include "carl/scheduler.h"
 #include "carl/stream.h"
 
@@ -30,9 +31,10 @@ public:
 int main() {
     carl::Scheduler scheduler;
 
+    carl::ReactiveContext context(scheduler);
     carl::Stream<int> numbers;
-    auto doubled = carl::stream_map(numbers, [](int value) { return value * 2; });
-    auto even = carl::stream_filter(numbers, [](int value) { return value % 2 == 0; });
+    auto doubled = context.stream_map(numbers, [](int value) { return value * 2; });
+    auto even = context.stream_filter(numbers, [](int value) { return value % 2 == 0; });
 
     ProducerActor producer(scheduler);
     PrinterActor doubled_printer(scheduler, "double");
