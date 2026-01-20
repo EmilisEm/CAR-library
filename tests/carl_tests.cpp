@@ -67,6 +67,36 @@ void test_stream_fold() {
     EXPECT_EQ(sum.value(), 6);
 }
 
+void test_multi_node_chain() {
+    carl::Scheduler scheduler(1);
+    carl::ReactiveContext context(scheduler);
+
+    carl::Signal<int> base(1);
+    auto plus_two = context.signal_map(base, [](int value) { return value + 2; });
+    auto times_three = context.signal_map(plus_two, [](int value) { return value * 3; });
+    carl::Signal<int> offset(5);
+    auto combined = context.signal_combine(times_three, offset, [](int a, int b) { return a + b; });
+
+    base.set(scheduler, 4);
+    scheduler.run();
+    EXPECT_EQ(plus_two.value(), 6);
+    EXPECT_EQ(times_three.value(), 18);
+    EXPECT_EQ(combined.value(), 23);
+
+    carl::Stream<int> stream;
+    auto even = context.stream_filter(stream, [](int value) { return value % 2 == 0; });
+    auto mapped = context.stream_map(even, [](int value) { return value * 10; });
+    auto sum = context.stream_fold(mapped, 0, [](int acc, int value) { return acc + value; });
+
+    stream.emit(scheduler, 1);
+    stream.emit(scheduler, 2);
+    stream.emit(scheduler, 3);
+    stream.emit(scheduler, 4);
+    scheduler.run();
+
+    EXPECT_EQ(sum.value(), 60);
+}
+
 void test_actor_message_loop() {
     carl::Scheduler scheduler;
     carl::Signal<int> signal(0);
@@ -86,6 +116,7 @@ int main() {
     test_signal_map();
     test_signal_combine();
     test_stream_fold();
+    test_multi_node_chain();
     test_actor_message_loop();
 
     if (failures == 0) {

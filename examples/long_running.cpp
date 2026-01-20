@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "carl/actor.h"
+#include "carl/reactive_context.h"
 #include "carl/scheduler.h"
 #include "carl/stream.h"
 #include "carl/task.h"
@@ -23,7 +24,10 @@ carl::Task compute_progress(carl::Scheduler& scheduler, carl::Stream<int>& progr
 
 int main() {
     carl::Scheduler scheduler;
+    carl::ReactiveContext context(scheduler);
     carl::Stream<int> progress;
+    auto milestones = context.stream_filter(progress, [](int step) { return step % 2 == 0; });
+    auto doubled = context.stream_map(progress, [](int step) { return step * 2; });
 
     ProgressActor logger(scheduler);
     auto sub = logger.subscribe(progress, [&logger](int step) {
@@ -31,6 +35,12 @@ int main() {
         if (step == 4) {
             logger.stop();
         }
+    });
+    auto milestone_sub = logger.subscribe(milestones, [&logger](int step) {
+        std::cout << "milestone: " << step << "\n";
+    });
+    auto doubled_sub = logger.subscribe(doubled, [&logger](int step) {
+        std::cout << "doubled: " << step << "\n";
     });
 
     scheduler.spawn(logger.run());
